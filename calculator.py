@@ -1,36 +1,63 @@
 from tkinter import *
 import random 
 import time
+from PIL import Image
+from datetime import datetime
+import datetime
 
 root = Tk()
 root.geometry("1600x800+0+0")
 root.title("Suman_dai_ko_DHOKAN")
+#root.configure(bg="white")
+
 
 text_Input = StringVar()
 operator =""
+yes =""
+no=""
 
-width="1600x800"
 
-Tops = Frame(root, width=1600 ,height=50,bg="powder blue", relief=SUNKEN)
+Tops = Frame(root, width=1600 ,height=50,bg="powder blue", relief=RIDGE)
 Tops.pack(side=TOP)
 
-f1 = Frame(root, width = 800 ,height=700,bg="powder blue", relief=SUNKEN)
+f1 = Frame(root, width = 800 ,height=500,bg="powder blue",relief=SUNKEN)
 f1.pack(side=LEFT)
 
-f2 = Frame(root, width = 300,height = 700,bg="powder blue", relief=SUNKEN)
+f2 = Frame(root, width = 300,height = 700,bg="powder blue",relief=SUNKEN)
 f2.pack(side=RIGHT)
-#f3=Frame(root,widh=50,height=50,fg="blue", bg="powder blue", relief=SUNKEN)
+
+#f3= Frame(root,width=1600,height=300,fg="blue", bg="powder blue", relief=SUNKEN).pack(side=Bottom)
+
 
 
 #==========================================================Time=======================================
 localtime=time.asctime(time.localtime(time.time()))
 
-#===========================================================info=======================================
+#datetime=Label(Tops,font("arial",20,"bold"),text=nowTime,bd=10 ,bg="black", fg="white", anchor="w").pack()
+#++++++++++++++++++++++++++++++Varibales_inset+++++++++++++++++++++++++++++++++
 
-#fucking mazing yr coding
-lblInfo = Label(Tops, font=("arial",60, "italic bold"),text="Botik Management System",fg="black", bg="powder blue", bd=10, anchor="w")
+order_bef = StringVar()
+stock_full = StringVar()
+shrting = StringVar()
+pant = StringVar()
+sari = StringVar()
+order_info = StringVar()
+delivery_report = StringVar()
+daily_info = StringVar()
+sales = StringVar()
+buy = StringVar()
+total_bank = StringVar()
+deposite = StringVar()
+withdraw = StringVar()
+due_amount = StringVar()
+order_info = StringVar()
+daily_cash = StringVar()
+
+#===========================================================info===============
+
+lblInfo = Label(Tops, font=("arial",60, "italic bold"),text="Botique Management System",fg="white", bg="black", bd=10, anchor="w", relief=RIDGE)
 lblInfo.pack()
-lblInfo = Label(Tops, font=("arial",20, "bold"),text=localtime,fg="black",bg="powder blue", bd=10, anchor="w")
+lblInfo = Label(Tops, font=("arial",30, "bold"),text=localtime,fg="white",bg="black", bd=10, anchor="w", relief=RIDGE)
 lblInfo.pack()
 
 #===========================================================Calculator================================== 
@@ -77,11 +104,17 @@ def rupen():
     global rupen
     rupen = rupen
 
+#fucking mazing yr coding
 def column(col):
     for coll in col:
         call=cal+1
 
     return call
+
+def yes_y():
+    rupe = Toplevel(root)
+    rupe.title("this is second window")
+    return rupe
 
 
 txtDisplay = Entry(f2,font=("arial", 20,"bold"), textvariable=text_Input, bd=30, insertwidth=4,
@@ -132,24 +165,42 @@ division=Button(f2,padx=16,pady=16,bd=8,fg="black", text="/", bg="powder blue", 
 
 rand = StringVar()
 
-lblReference = Label(f1,font=("arial", 16,"bold"), text="Reference",bd=16,fg="black",anchor="w")
+lblReference = Label(f1,font=("arial", 16,"bold"), text="Reference",bd=16,fg="black",anchor="w",relief=GROOVE)
 lblReference.grid(row=0,column=0)
 txtReference=Entry(f1,font=("arial", 16, "bold"), textvariable=rand, bd=10,insertwidth=4,bg="powder blue", justify = "right")
 txtReference.grid(row=0,column=1)
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lblReference = Label(f1,font=("arial", 16,"bold"), text="Reference",bd=16,fg="black",anchor="w")
+lblReference = Label(f1,font=("arial", 16,"bold"), text="Reference",bd=16,fg="black",anchor="w", relief=GROOVE)
 lblReference.grid(row=0,column=0)
 txtReference=Entry(f1,font=("arial", 16, "bold"), textvariable=rand, bd=10,insertwidth=4,bg="powder blue", justify = "right")
 txtReference.grid(row=0,column=1)
 
-image = PhotoImage("/root/Desktop/tkinter/index.gif")
-Label (root,bg="black",width=50,height=50, image=image).pack()
+#img = "/root/Desktop/Desktop/python/projects/prj1_Botik/1.jpg"
+#root.ima = Image.open(img)
+#Label (root,bg="white",width=120,height=120, image=ima).pack()
 
-lblBillIn=Label(f1,font=("arial", 20, "bold"), text="bill_In_no:",bg="blue", fg="black",anchor="w").grid(row=1,column=0)
-lblBillOut=Label(f1,font=("arial",20, "bold"), text="bill_Out_no:", bg="blue",fg="black",anchor="w").grid(row=1,column=1)
+bill_in = StringVar()
+bill_out = StringVar()
 
-lblstock=Label(f1,font=("arial",20, "bold"), text="stock_entry",bg="blue",fg="black", anchor="e")
+lblBillIn=Label(f1,font=("arial", 20, "bold"), text="bill_In_no:",bg="white", fg="black",anchor="w",relief=GROOVE).grid(row=1,column=0)
+lblBillIn=Entry(f1,font=("arial", 16, "italic"), bd=10, textvariable=bill_in, insertwidth=1,bg="black",fg="powder blue", justify="left").grid(row=2,column=0)
+
+no=Button(root,padx=16,pady=16, font=("arial",12, "bold"),text="no", bd=8,bg="black", fg="white",relief=RAISED).pack(side=RIGHT)
+yes=Button(root,padx=16,pady=16,font=("arial",12, "bold"),text="yes",bd=8,bg="black", fg="white", command=yes_y,relief=RAISED).pack(side=RIGHT)
+
+lblBillOut=Label(f1,font=("arial",20, "bold"), text="bill_Out_no:", bg="white",fg="black",anchor="w",relief=GROOVE).grid(row=1,column=1)
+lblBillOut=Entry(f1,font=("arial",16, "bold"), textvariable=bill_out, insertwidth=1, bd=10,bg="black",fg="green", justify="left").grid(row=2,column=1)
+
+lblstock=Label(f1,font=("arial",20, "bold"), text="stock_entry:  ",bg="white",fg="black", anchor="e", relief=GROOVE).grid(row=3,column=0)
+lblstock=Entry(f1,font=("arial", 16, "bold"), textvariable=stock_full, insertwidth=1, bd=10,bg="black", fg="green", justify="left").grid(row=4,column=0)
+
+lblstock=Label(f1,font=("arial",16,"bold"),text="shrting mm : ", bg="white", fg="black", anchor="e").grid(row=3, column=1)
+lblstock=Entry(f1,font=("arial",16,"bold"),bd=10, textvariable=shrting, bg="black", fg="green", justify="left").grid(row=4, column=1)
+lblpant=Label(f1, font=("arial", 16, "bold"), bg="white",fg="white", text="pant pcs: ",anchor="e", relief=GROOVE).grid(row=5,column=0)
+lblpant=Entry(f1, font=("arial", 16, "bold"), bg="black", fg="green", textvariable=pant, insertwidth=1, justify="left",bd=10).grid(row=6,column=0)
+
+
 
 root.mainloop()
 #add1=Button(f2,padx=16,pady=16,bd=8, fg="black", font=("arial",20,"bold"), 
