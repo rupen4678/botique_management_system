@@ -1,0 +1,28 @@
+#order inform before - 60 hrs
+
+#stock- shifting, suiting, sari material
+
+#complete order stock
+
+#delivery report,(goods)
+
+#income Expendture daily
+
+#sales- Buy daily
+
+#Bank deposite, withdraw-due Amount
+
+#order Information Daily
+
+#Credit transction daily
+
+#Credit transction daily "credit Transction clear daily"
+
+#Daily used bill number entry and daily received bill number entry
+
+#Due Delivery Report dily
+
+
+if "the goods is prepared then inform customer through sms otherwise":
+
+else "if the number is in record database them inform the customer about the new item available report":
